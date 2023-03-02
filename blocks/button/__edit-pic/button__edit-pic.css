@@ -1,0 +1,24 @@
+.button__edit-pic {
+    box-sizing: border-box;
+    border: 2px solid #fff;
+    border-radius: 2px;
+    padding-top: 46px;
+    max-width: 150px;
+    background-image: url(../../../images/Plus.svg);
+    background-color: black;
+    background-repeat: no-repeat;
+    background-position: 50%;
+}
+
+.button__edit-pic:hover {
+    opacity: .6;
+    cursor: pointer;
+}
+
+@media screen and (max-width: 1023px) {
+    .button__edit-pic {
+        margin: 34px auto 0;
+        min-width: 282px;
+    }
+    
+}

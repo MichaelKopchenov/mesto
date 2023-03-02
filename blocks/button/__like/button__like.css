@@ -1,0 +1,15 @@
+.button__like {
+    background-image: url(../../../images/Vector.svg);
+    background-color: #fff;
+    background-repeat: no-repeat;
+    background-position: 50%;
+    min-width: 22px;
+    min-height: 19px;
+    margin: 5px 5px 0 auto;
+    border: none;
+}
+
+.button__like:hover {
+    opacity: .6;
+    cursor: pointer;
+}
