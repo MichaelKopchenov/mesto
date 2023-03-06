@@ -1,4 +1,4 @@
-.popup__save {
+.button_popup-save {
     margin: 18px auto 32px;
     min-width: 358px;
     min-height: 50px;
@@ -11,12 +11,12 @@
     border-radius: 2px;
 }
 
-.popup__save:hover {
+.button_popup-save:hover {
     opacity: .8;
 }
 
 @media screen and (max-width: 767px) {
-    .popup__save {
+    .button_popup-save {
         min-height: 46px;
         min-width: 238px;
         margin: 15px auto 25px;

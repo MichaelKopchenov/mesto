@@ -1,4 +1,4 @@
-.button__edit-profile {
+.button_edit-profile {
     display: flex;
     align-self: center;
     padding-top: 22px;
@@ -11,12 +11,12 @@
     max-height: 24px;
 }
 
-.button__edit-profile:hover {
+.button_edit-profile:hover {
     opacity: .6;
 }
 
 @media screen and (max-width: 1023px) {
-    .button__edit-profile {
+    .button_edit-profile {
      margin: 0;
      padding-top: 16px;   
     }
