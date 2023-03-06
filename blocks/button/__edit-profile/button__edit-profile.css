@@ -7,12 +7,12 @@
     background-repeat: no-repeat;
     background-position: 50%;
     border: 1px solid #fff;
-    min-width: 18px;
+    min-width: 24px;
+    max-height: 24px;
 }
 
 .button__edit-profile:hover {
     opacity: .6;
-    cursor: pointer;
 }
 
 @media screen and (max-width: 1023px) {
