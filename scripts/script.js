@@ -1,7 +1,7 @@
 /*Открытие окна для редкатирования профиля*/
-let openProfile = document.querySelector('.button__edit-profile');
+let openProfile = document.querySelector('.button_edit-profile');
 let profile = document.querySelector('.popup');
-let closedProfile = document.querySelector('.button__popup-close');
+let closedProfile = document.querySelector('.button_popup-close');
 
 function showClick() {
     profile.classList.add('popup_opened');
@@ -16,7 +16,7 @@ function closeClick() {
 closedProfile.addEventListener('click', closeClick);
 
 /*Редактирование профиля*/
-let formElement = document.querySelector('.popup__save');
+let formElement = document.querySelector('.button_popup-save');
 
 function handleFormSubmit() {
     event.preventDefault();
