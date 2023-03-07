@@ -1,22 +1,26 @@
-.button_popup-close {
-    background-image: url(../../../images/Close\ Icon.svg);
+.button_type_popup-close {
+    background-image: url(../../../images/CloseIcon.svg);
     background-position: 50%;
-    background-repeat: no-repeat;
     background-color: transparent;
     border: none;
     min-height: 32px;
     min-width: 32px;
     position: absolute;
-    top: -48px;
-    right: -48px;
+    top: -40px;
+    right: -40px;
+}
+
+.button_type_popup-close:hover {
+    opacity: .6;
 }
 
 @media screen and (max-width: 767px) {
-    .button_popup-close {
+    .button_type_popup-close {
         min-width: 20px;
         min-height: 20px;
         top: -36px;
         right: 0;
+        background-size: contain;
     }
     
 }

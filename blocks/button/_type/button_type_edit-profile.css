@@ -1,24 +1,23 @@
-.button_edit-profile {
+.button_type_edit-profile {
     display: flex;
     align-self: center;
     padding-top: 22px;
     background-color: black;
     background-image: url(../../../images/prof.svg);
-    background-repeat: no-repeat;
     background-position: 50%;
     border: 1px solid #fff;
     min-width: 24px;
-    max-height: 24px;
 }
 
-.button_edit-profile:hover {
+.button_type_edit-profile:hover {
     opacity: .6;
 }
 
 @media screen and (max-width: 1023px) {
-    .button_edit-profile {
+    .button_type_edit-profile {
      margin: 0;
      padding-top: 16px;   
+     min-width: 18px;
     }
     
 }

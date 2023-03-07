@@ -1,5 +1,5 @@
-.button_popup-save {
-    margin: 18px auto 32px;
+.button_type_popup-save {
+    margin: 18px auto 35px;
     min-width: 358px;
     min-height: 50px;
     background-color: #000;
@@ -11,12 +11,12 @@
     border-radius: 2px;
 }
 
-.button_popup-save:hover {
+.button_type_popup-save:hover {
     opacity: .8;
 }
 
 @media screen and (max-width: 767px) {
-    .button_popup-save {
+    .button_type_popup-save {
         min-height: 46px;
         min-width: 238px;
         margin: 15px auto 25px;
