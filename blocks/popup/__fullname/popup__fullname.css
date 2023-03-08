@@ -8,6 +8,7 @@
     line-height: 17px;
     min-width: 358px;
     outline: none;
+    padding-bottom: 8px;
 }
 
 @media screen and (max-width: 767px) {

@@ -2,7 +2,7 @@
     padding: 0;
     transition: .5s ease;
     background-color: #000;
-    margin: 18px auto 35px;
+    margin: 18px auto 37px;
     min-width: 358px;
     min-height: 50px;
     color: #fff;
@@ -10,6 +10,7 @@
     font-size: 18px;
     line-height: 22px;
     text-align: center;
+    border: none;
 }
 
 .popup__save-btn:hover {
