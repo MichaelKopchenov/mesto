@@ -1,7 +1,6 @@
 .button {
     padding: 0;
     box-sizing: border-box;
-    transition: opacity .5s ease;
+    transition: .5s ease;
     cursor: pointer;
-    background-repeat: no-repeat;
 }

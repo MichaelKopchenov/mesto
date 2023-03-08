@@ -1,16 +1,10 @@
 .button_type_edit-pic {
     border: 2px solid #fff;
-    border-radius: 2px;
     padding-top: 46px;
     max-width: 150px;
     background-image: url(../../../images/Plus.svg);
-    background-color: black;
     background-position: 50%;
     background-size: 20px;
-}
-
-.button_type_edit-pic:hover {
-    opacity: .6;
 }
 
 @media screen and (max-width: 1023px) {

@@ -1,7 +1,7 @@
 /*Открытие окна для редкатирования профиля*/
-let openProfile = document.querySelector('.button_type_edit-profile');
+let openProfile = document.querySelector('.button__edit-profile');
 let profile = document.querySelector('.popup');
-let closedProfile = document.querySelector('.button_type_popup-close');
+let closedProfile = document.querySelector('.button__close');
 
 function showClick() {
     profile.classList.add('popup_opened');
@@ -16,15 +16,16 @@ function closeClick() {
 closedProfile.addEventListener('click', closeClick);
 
 /*Редактирование профиля*/
-let formElement = document.querySelector('.button_type_popup-save');
+let formElement = document.querySelector('.button__save');
 
-function handleFormSubmit (evt) {
-    evt.preventDefault();
+function handleFormSubmit (event) {
+    event.preventDefault();
     const name = document.getElementById('name').value;
     document.getElementById('infoname').textContent = name;
     const hobbie = document.getElementById('job').value;
-    document.getElementById('infohobbie').textContent = hobbie;  
+    document.getElementById('infojob').textContent = hobbie;  
     closeClick();
 }
 
+/*Отправка формы*/
 formElement.addEventListener('submit', handleFormSubmit);

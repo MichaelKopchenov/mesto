@@ -1,0 +1,7 @@
+.button__edit {
+    background-repeat: no-repeat;
+}
+
+.button__edit:hover {
+    opacity: .6;
+}
