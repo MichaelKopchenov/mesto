@@ -19,9 +19,6 @@ closedProfile.addEventListener('click', closeClick);
 let formElement = document.querySelector('.popup__form');
 
 function handleFormSubmit (event) {
-    console.log(event.target);
-    console.log(event.currentTarget);
-    console.log(event.type);
     event.preventDefault();
     const name = document.getElementById('name').value;
     document.getElementById('infoname').textContent = name;
