@@ -1,16 +1,23 @@
-.button__edit-profile {
+.profile__edit-profile {
     display: flex;
     align-self: center;
-    padding-top: 22px;
+    padding: 22px 0 0 0;
     background-color: black;
     background-image: url(../../../images/prof.svg);
+    background-repeat: no-repeat;
     background-position: 50%;
     border: 1px solid #fff;
+    transition: .5s ease;
     min-width: 24px;
 }
 
+.profile__edit-profile:hover {
+    opacity: .6;
+    cursor: pointer;
+}
+
 @media screen and (max-width: 1023px) {
-    .button__edit-profile {
+    .profile__edit-profile {
      margin: 0;
      padding-top: 16px;
      min-width: 18px;

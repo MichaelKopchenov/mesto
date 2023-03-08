@@ -1,7 +1,7 @@
 /*Открытие окна для редкатирования профиля*/
-let openProfile = document.querySelector('.button__edit-profile');
+let openProfile = document.querySelector('.profile__edit-profile');
 let profile = document.querySelector('.popup');
-let closedProfile = document.querySelector('.button__close');
+let closedProfile = document.querySelector('.popup__close-btn');
 
 function showClick() {
     profile.classList.add('popup_opened');

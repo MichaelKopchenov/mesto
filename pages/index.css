@@ -5,16 +5,12 @@
 /*Общие стили для страницы*/
 @import url(../blocks/page/page.css);
 
-/*Блок с кнопками*/
-@import url(../blocks/button/button.css);
-@import url(../blocks/button/__close/button__close.css);
-@import url(../blocks/button/__edit-profile/button__edit-profile.css);
-@import url(../blocks/button/__edit/button__edit.css);
-@import url(../blocks/button/__like/button__like.css);
-@import url(../blocks/button/__save/button__save.css);
-@import url(../blocks/button/__style/button__style.css);
-@import url(../blocks/button/_type/button_type_edit-pic.css);
-@import url(../blocks/button/_type/button_type_like.css);
+/*Кнопки на странице*/
+@import url(../blocks/element/__like-btn/element__like-btn.css);
+@import url(../blocks/popup/__close-btn/popup__close-btn.css);
+@import url(../blocks/popup/__save-btn/popup__save-btn.css);
+@import url(../blocks/profile/__edit-pic/profile__edit-pic.css);
+@import url(../blocks/profile/__edit-profile/profile__edit-profile.css);
 
 /*Шапка сайта*/
 @import url(../blocks/header/header.css);
