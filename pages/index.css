@@ -7,10 +7,12 @@
 
 /*Кнопки на странице*/
 @import url(../blocks/element/__like-btn/element__like-btn.css);
+@import url(../blocks/element/__like-btn/_active/element__like-btn_active.css);
 @import url(../blocks/popup/__close-btn/popup__close-btn.css);
 @import url(../blocks/popup/__save-btn/popup__save-btn.css);
 @import url(../blocks/profile/__edit-pic/profile__edit-pic.css);
 @import url(../blocks/profile/__edit-profile/profile__edit-profile.css);
+@import url(../blocks/element/__delete-btn/element__delete-btn.css);
 
 /*Шапка сайта*/
 @import url(../blocks/header/header.css);
@@ -41,3 +43,7 @@
 @import url(../blocks/popup/__fullname/popup__fullname.css);
 @import url(../blocks/popup/__title/popup__title.css);
 @import url(../blocks/popup/_opened/popup_opened.css);
+@import url(../blocks/popup/_type/popup_type_picture.css);
+@import url(../blocks/popup/__container/_type/popup__container_type_picture.css);
+@import url(../blocks/popup/__picture/popup__picture.css);
+@import url(../blocks/popup/__name/popup__name.css);
