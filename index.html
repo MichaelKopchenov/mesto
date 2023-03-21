@@ -28,35 +28,35 @@
     <footer class="footer">
         <p class="footer__copyright">&copy; 2020. Mesto Russia</p>
     </footer>
-    <section class="popup">
+    <div id="profile" class="popup">
         <div class="popup__container">
             <button type="button" class="popup__close-btn"></button>
             <h3 class="popup__title">Редактировать профиль</h3>
-            <form id="form-profile" class="popup__form" name="edit-data">
+            <form id="form-profile" class="popup__form" name="edit-profile">
                 <input type="text" class="popup__fullname" name="name" id="name" placeholder="Имя">
                 <input type="text" class="popup__fullname" name="job" id="job" placeholder="О себе">
                 <button type="submit" class="popup__save-btn">Сохранить</button>
             </form>
         </div>    
-    </section>
-    <section id="cards" class="popup">
+    </div>
+    <div id="cards" class="popup">
         <div class="popup__container">
             <button id="close-card" type="button" class="popup__close-btn"></button>
             <h3 class="popup__title">Новое место</h3>
             <form id="form-cards" class="popup__form" name="edit-place">
-                <input type="text" class="popup__fullname" name="name" id="place-namecard" placeholder="Название">
-                <input type="text" class="popup__fullname" name="link" id="place-linkcard" placeholder="Ссылка на картинку">
+                <input type="text" class="popup__fullname" name="name" id="card-name" placeholder="Название">
+                <input type="text" class="popup__fullname" name="link" id="card-link" placeholder="Ссылка на картинку">
                 <button type="submit" class="popup__save-btn">Создать</button>
             </form>
         </div>
-    </section>
-    <section id="pictures" class="popup popup_type_picture">
+    </div>
+    <div id="pictures" class="popup popup_type_picture">
         <div class="popup__container popup__container_type_picture">
-            <button id="close-picture" type="button" class="popup__close-btn"></button>
+            <button type="button" class="popup__close-btn"></button>
                 <img src="#" alt="#" class="popup__picture">
                 <h2 class="popup__name"></h2>
         </div>
-    </section>
+    </div>
     <template id="template">
         <article class="element">
            <button type="button" class="element__delete-btn"></button>
