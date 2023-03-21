@@ -74,7 +74,7 @@ popupCloseBtns.forEach((item) => {
 popupProfileOpenBtn.addEventListener('click', () => {
   openPopup(popupProfile);
   popupInputName.value = profileName.textContent;
-  inputJob.value = profileJob.textContent;
+  popupInputJob.value = profileJob.textContent;
 });
 
 /*Закрытие профиля с данными*/
