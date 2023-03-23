@@ -103,7 +103,7 @@ function activateLikeClass(evt) {
 };
 
 /*Удаление карточки*/
-function deletCard (evt) {
+function deleteCard (evt) {
   const card = evt.target.closest('.element');
   card.remove();
 };
@@ -120,7 +120,7 @@ function createNewCard ({name, link}) {
   popupCardLink.src = link;   
   popupCardLink.alt = name; 
   elementCardBtnLike.addEventListener("click", activateLikeClass);
-  elementCardBtnDelete.addEventListener("click", deletCard);
+  elementCardBtnDelete.addEventListener("click", deleteCard);
   popupCardLink.addEventListener('click', () => openPopupImage(name, link))
   return cardElement;
 };
