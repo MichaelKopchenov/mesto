@@ -62,22 +62,12 @@ function closePopup (popup) {
   popup.classList.remove('popup_opened');
 };
 
-/*Закрытие кликом на "Крестик"*/
-popupCloseBtns.forEach((item) => {
-  item.addEventListener('click', (evt) => {
-    const popupCloseBtn = popupGetClass(evt);
-    closePopup(popupCloseBtn);
-  });
-});
-
 /*Открытие профиля с начальными данными*/
 function openPopupProfileBtn () {
   popupInputName.value = profileName.textContent;
   popupInputJob.value = profileJob.textContent;
   openPopup(popupProfile);
 };
-
-popupProfileOpenBtn.addEventListener('click', openPopupProfileBtn);
 
 /*Сохранение новых данных профиля*/
 function handleFormProfile(evt) {
@@ -86,7 +76,6 @@ function handleFormProfile(evt) {
   profileJob.textContent = popupInputJob.value;
   closePopup(popupProfile)
 }
-popupFormProfile.addEventListener('submit', handleFormProfile);
 
 /*Открытие всплывающего окна для добавления карточек*/
 function openPopupCard () {
@@ -94,7 +83,6 @@ function openPopupCard () {
   popupFormLink.value = '';
   openPopup(popupCards);
 }
-popupCardsOpenBtn.addEventListener('click', openPopupCard);
 
 /*Возвращаем событие*/
 const popupGetClass = (evt) => {
@@ -155,4 +143,14 @@ function handleNewCard(evt) {
   closePopup(popupCards);
 };
 
-popupFormCards.addEventListener('submit', handleNewCard);
+/*Слушатели событий*/
+popupProfileOpenBtn.addEventListener('click', openPopupProfileBtn); //Открытие профиля
+popupFormProfile.addEventListener('submit', handleFormProfile);     //Отправка новых данных профиля
+popupCardsOpenBtn.addEventListener('click', openPopupCard);         //Открытие окна для добавления карточки
+popupFormCards.addEventListener('submit', handleNewCard);           //Отправка заполненной формы для создания карточки
+popupCloseBtns.forEach((item) => {                                  //Закрытие окон по нажатию на "Крестик".
+  item.addEventListener('click', (evt) => {
+    const popupCloseBtn = popupGetClass(evt);
+    closePopup(popupCloseBtn);
+  });
+});
