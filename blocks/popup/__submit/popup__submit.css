@@ -1,8 +1,7 @@
-.popup__save-btn {
+.popup__submit {
     padding: 0;
     transition: .5s ease;
     background-color: #000;
-    margin: 18px auto 0;
     min-width: 358px;
     min-height: 50px;
     color: #fff;
@@ -11,15 +10,16 @@
     line-height: 22px;
     text-align: center;
     border: none;
+    border-radius: 2px;
 }
 
-.popup__save-btn:hover {
-    opacity: .8;
+.popup__submit:hover {
+    background: rgba(0, 0, 0, .8);
     cursor: pointer;
 }
 
 @media screen and (max-width: 767px) {
-    .popup__save-btn {
+    .popup__submit {
         min-height: 46px;
         min-width: 238px;
         margin: 15px auto 25px;

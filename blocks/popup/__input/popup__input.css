@@ -1,4 +1,4 @@
-.popup__fullname {
+.popup__input {
     display: flex;
     border: none;
     border-bottom: 1px solid rgba(0,0,0,.2);
@@ -8,11 +8,11 @@
     line-height: 17px;
     min-width: 358px;
     outline: none;
-    padding-bottom: 8px;
+    padding: 0 0 8px 0;
 }
 
 @media screen and (max-width: 767px) {
-    .popup__fullname {
+    .popup__input {
         min-width: 238px;
     }
     
