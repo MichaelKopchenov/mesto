@@ -9,7 +9,7 @@ const settings = {
   };
 
 //Функция добавления класса с ошибкой
-const showInputError = (formElement, inputElement, errorMessage) => {
+const showInputError = (formElement, inputElement, errorMessage, settings) => {
     const errorElement = formElement.querySelector(`.${inputElement.id}-input-error`);
 
     inputElement.classList.add(settings.inputErrorClass);
@@ -18,7 +18,7 @@ const showInputError = (formElement, inputElement, errorMessage) => {
   };
 
 //Функция скрытия класса с ошибкой
-const hideInputError = (formElement, inputElement) => {
+const hideInputError = (formElement, inputElement,settings) => {
     const errorElement = formElement.querySelector(`.${inputElement.id}-input-error`);
 
     inputElement.classList.remove(settings.inputErrorClass);
@@ -26,46 +26,45 @@ const hideInputError = (formElement, inputElement) => {
     errorElement.textContent = '';
   };
 
-const hideInputErrorAll = (formElement, inputList) => {
-    inputList.forEach((inputElement) => {
-        const errorElement = formElement.querySelector(`.${inputElement.id}-input-error`);
-
-        if (!inputElement.validity.valid) {
-        inputElement.classList.remove(settings.inputErrorClass);
-        errorElement.textContent = '';
-        errorElement.classList.remove(settings.errorClass);
-        }
-    });
-};  
+const resetError = (formElement, inputList, settings) => { 
+    inputList.forEach((inputElement) => { 
+        const errorElement = formElement.querySelector(`.${inputElement.id}-input-error`); 
+ 
+        if (!inputElement.validity.valid) { 
+        inputElement.classList.remove(settings.inputErrorClass); 
+        errorElement.textContent = ''; 
+        errorElement.classList.remove(settings.errorClass); 
+        } 
+    }); 
+}; 
 
 //Проверка валидности поля
-const isValid = (formElement, inputElement) => {                                             
+const isValid = (formElement, inputElement, settings) => {                                             
   if (!inputElement.validity.valid) {
-    showInputError(formElement, inputElement, inputElement.validationMessage);
+    showInputError(formElement, inputElement, inputElement.validationMessage, settings);
   } else {
-    hideInputError(formElement, inputElement);
+    hideInputError(formElement, inputElement, settings);
   }
 };
 
 //Добавление обработчиков всем полям формы
-const setEventListeners = (formElement) => {
+const setEventListeners = (formElement, settings) => {
     const inputList = Array.from(formElement.querySelectorAll(settings.inputSelector));
     const buttonElement = formElement.querySelector(settings.submitButtonSelector);
 
-    toggleButtonState(inputList, buttonElement);
+    toggleButtonState(inputList, buttonElement, settings);
 
     inputList.forEach((inputElement) => {
       inputElement.addEventListener('input', () => {
         
-        isValid(formElement, inputElement);
-        toggleButtonState(inputList, buttonElement);
+        isValid(formElement, inputElement, settings);
+        toggleButtonState(inputList, buttonElement, settings);
       });
     });
   };
 
 //Функция поиска и обработки форм
 const enableValidation = (settings) => {
-  document.querySelectorAll(settings.formSelector);
   const formList = Array.from(document.querySelectorAll(settings.formSelector));
 
   formList.forEach((formElement) => {
@@ -86,7 +85,7 @@ function hasInvalidInput (inputList) {
 }
 
 //Функция добавления класса для кнопки отправки
-function toggleButtonState (inputList, buttonElement) {
+function toggleButtonState (inputList, buttonElement, settings) {
   if (hasInvalidInput(inputList)) {
     buttonElement.classList.add(settings.inactiveButtonClass);
     buttonElement.setAttribute('disabled', true);

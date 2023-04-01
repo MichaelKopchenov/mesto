@@ -16,33 +16,7 @@ const popupCardsOpenBtn = document.querySelector('.profile__edit-pic');
 const popupFormCards = popupCards.querySelector('#form-cards');      
 const popupFormTitle = popupCards.querySelector('#card-name');      
 const popupFormLink = popupCards.querySelector('#card-link');
-const popupHendleBtnCards = popupCards.querySelector('#card-btn'); 
-const initialCards = [
-  {
-    name: 'Архыз',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/arkhyz.jpg'
-  },
-  {
-    name: 'Челябинская область',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/chelyabinsk-oblast.jpg'
-  },
-  {
-    name: 'Иваново',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/ivanovo.jpg'
-  },
-  {
-    name: 'Камчатка',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kamchatka.jpg'
-  },
-  {
-    name: 'Холмогорский район',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kholmogorsky-rayon.jpg'
-  },
-  {
-    name: 'Байкал',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg'
-  }
-];       
+const popupHendleBtnCards = popupCards.querySelector('#card-btn');        
 
 //Увеличение изображения
 const popupPicture = document.querySelector('#pictures');    
@@ -88,11 +62,11 @@ function handleFormProfile(evt) {
 
 //Открытие всплывающего окна для добавления карточек
 function openPopupCard () {
-  popupFormTitle.value = '';
-  popupFormLink.value = '';
+  popupFormCards.reset();
 
   openPopup(popupCards);
-}
+};
+
 
 //Возвращаем событие
 const popupGetClass = (evt) => {
@@ -182,18 +156,18 @@ function handleNewCard(evt) {
 popupProfileOpenBtn.addEventListener('click', () => {                                             //Открытие профиля
   const popupInputAll = Array.from(popupProfile.querySelectorAll('.popup__input'));
 
-  hideInputErrorAll(popupFormProfile, popupInputAll);
+  resetError(popupFormProfile, popupInputAll, settings);
   openPopupProfileBtn()
-  toggleButtonState(popupInputAll, popupHendleBtn);
+  toggleButtonState(popupInputAll, popupHendleBtn, settings);
 });
 popupFormProfile.addEventListener('submit', handleFormProfile);                                  //Отправка новых данных профиля
 
 popupCardsOpenBtn.addEventListener('click', () => {                                              //Открытие окна для добавления карточки 
   const popupInputAll = Array.from(popupCards.querySelectorAll('.popup__input'));
 
-  hideInputErrorAll(popupFormCards, popupInputAll);
+  resetError(popupFormCards, popupInputAll, settings);
   openPopupCard();
-  toggleButtonState(popupInputAll, popupHendleBtnCards);
+  toggleButtonState(popupInputAll, popupHendleBtnCards, settings);
 });
 popupFormCards.addEventListener('submit', handleNewCard);                                        //Отправка заполненной формы для создания карточки
 
