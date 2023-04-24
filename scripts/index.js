@@ -2,9 +2,6 @@
 import Card from './Card.js';                     //Импорт класса по добавлению карточек
 import FormValidator from './FormValidator.js';   //Импорт класса по валидации форм
 
-//Экспорт
-export { openPopup };                             //Экспорт функции по открытию всплывающих окон
-
 //Все всплывающие окна
 const popups = document.querySelectorAll('.popup');
 
@@ -33,6 +30,11 @@ const popupCardsOpenBtn = document.querySelector('.profile__edit-pic');
 const popupFormCards = popupCards.querySelector('#form-cards');      
 const popupFormTitle = popupCards.querySelector('#card-name');      
 const popupFormLink = popupCards.querySelector('#card-link');
+
+//Режим просмотра
+const popupPicture = document.querySelector('#pictures');    
+const popupPictureFillImage = document.querySelector('.popup__picture');   
+const popupPictureFillTitle = document.querySelector('.popup__name');
 
 //Закрытие всплывающих окон
 const popupCloseBtns = document.querySelectorAll('.popup__close-btn');      
@@ -86,6 +88,15 @@ const popupGetClass = (evt) => {
   return evt.target.closest('.popup');
 };
 
+//Функция открытия режима просмотра
+function openPopupImage (link, name) {
+  popupPictureFillImage.src = link;
+  popupPictureFillTitle.textContent = name;
+  popupPictureFillImage.alt = name;
+
+  openPopup(popupPicture);
+};
+
 //Закрытие окон по нажатию на "Крестик".
 popupCloseBtns.forEach((item) => {                                                               
   item.addEventListener('click', (evt) => {
@@ -113,17 +124,18 @@ popups.forEach((popup) => {
   });
 });
 
-//Создание карточек из массива
-initialCards.forEach(function (name, link) {
-  cardsSection.append(renderCard(name, link));
-});
-
 //Добавление карточек в начало
-function renderCard(data) {
-  const createdCard = new Card(data, '#template');
+const renderCard = (data) => {
+  const createdCard = new Card(data, '#template', openPopupImage);
   const newCardCreated = createdCard.createNewCard();
   cardsSection.prepend(newCardCreated);
+  return newCardCreated;
 };
+
+//Создание карточек из массива
+initialCards.forEach(function (data) {
+  cardsSection.append(renderCard(data));
+});
 
 //Добавление карточек
 function handleNewCard(evt) {
