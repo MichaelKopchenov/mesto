@@ -35,8 +35,7 @@ const section = new Section({
   items: initialCards,
   renderer: (data) => {
     const createdCard = new Card(data, '#template', popupZoomPicture.open);
-    const cardElement = createdCard.createNewCard();
-    return cardElement;
+    return createdCard.createNewCard();
   }
 }, sectionOfCardsSelector);
 
@@ -44,13 +43,13 @@ const section = new Section({
 section.renderItems();
 
 //ООП Экземпляр класса PopupWithForm для редактирования профиля
-const popupProfileEdit = new PopupWithForm(popupProfileSelector, (data) => {
-  userInfo.setUserInfo(data);
+const popupProfileEdit = new PopupWithForm(popupProfileSelector, () => {
+  userInfo.setUserInfo(popupProfileEdit._getInputValues());
 });
 
 //ООП Экземпляр класса PopupWithForm для добавления новых карточек
-const popupCardsAdd = new PopupWithForm(popupCardsSelector, (data) => {
-  section.addItem(data);
+const popupCardsAdd = new PopupWithForm(popupCardsSelector, () => {
+  section.addItem(section.renderer(popupCardsAdd._getInputValues()));
 });
 
 //Открытие профиля с начальными данными

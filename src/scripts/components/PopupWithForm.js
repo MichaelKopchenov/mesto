@@ -19,7 +19,7 @@ _getInputValues() {
 
 setInputValues(dataOfUser) {
     this._inputList.forEach(input => {
-      input.value = dataOfUser[input.name];
+      input.value = dataOfUser[input.name] ?? '';
     });
   };
 
