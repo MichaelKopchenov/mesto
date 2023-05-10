@@ -68,8 +68,6 @@ _setEventListeners() {
               this._toggleButtonState();
              });    
     });
-  
-    this._toggleButtonState();
 };
 
 //ООП Активация валидации

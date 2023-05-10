@@ -1,9 +1,9 @@
 //ООП Объявление класса карточек
 export default class Card {
 //ООП Заполнение объекта данными
-    constructor(data, templateSelector, openPopupImage) {
+    constructor(data, templateSelector, openPopupZoomPicture) {
       this._templateSelector = templateSelector;
-      this._openPopupImage = openPopupImage;
+      this._openPopupZoomPicture = openPopupZoomPicture;
       this._name = data.name;
       this._link = data.link;
     };
@@ -27,8 +27,11 @@ createNewCard() {
   };
 
 //ООП Открытие изображения в режиме просмотра
-_openViewPopupImage = (evt) => {
-    this._openPopupImage(this._link, this._name);
+_openViewPopupImage = () => {
+    this._openPopupZoomPicture({
+      link: this._link, 
+      name: this._name
+    });
   };
 
 //ООП Лайк
