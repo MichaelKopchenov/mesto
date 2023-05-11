@@ -19,6 +19,7 @@ import {
   formPopupProfile,
   formPopupCard
 } from '../scripts/utils/Consts.js';
+import { data } from 'autoprefixer';
 
 //ООП Валидация форм
 const validationProfile = new FormValidator(settings, formPopupProfile);
@@ -30,12 +31,17 @@ const userInfo = new UserInfo(userInformation);
 //ООП Экземпляр класса PopupWithImage
 const popupZoomPicture = new PopupWithImage(popupZoomPictureSelector);
 
+// Создание карточки
+const createCard = (cardData) => {
+  const card = new Card (cardData, '#template', popupZoomPicture.open);
+  return card.createNewCard();
+};
+
 //ООП Экземпляр класса Section для создания разметки и начальных карточек
 const section = new Section({
   items: initialCards,
-  renderer: (data) => {
-    const createdCard = new Card(data, '#template', popupZoomPicture.open);
-    return createdCard.createNewCard();
+  renderer: (card) => { 
+    section.addItem(createCard(card));
   }
 }, sectionOfCardsSelector);
 
@@ -43,14 +49,15 @@ const section = new Section({
 section.renderItems();
 
 //ООП Экземпляр класса PopupWithForm для редактирования профиля
-const popupProfileEdit = new PopupWithForm(popupProfileSelector, () => {
-  userInfo.setUserInfo(popupProfileEdit._getInputValues());
+const popupProfileEdit = new PopupWithForm(popupProfileSelector, (data) => {
+  userInfo.setUserInfo(data);
 });
 
 //ООП Экземпляр класса PopupWithForm для добавления новых карточек
-const popupCardsAdd = new PopupWithForm(popupCardsSelector, () => {
-  section.addItem(section.renderer(popupCardsAdd._getInputValues()));
-});
+const popupCardsAdd = new PopupWithForm(popupCardsSelector, (data) => {
+  section.addItem(createCard(data));
+})
+
 
 //Открытие профиля с начальными данными
 function openPopupProfileBtn() {
