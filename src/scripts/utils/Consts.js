@@ -30,7 +30,12 @@ export const initialCards = [
 export const popupProfileSelector = '#profile';
 export const popupCardsSelector = '#cards';
 export const popupZoomPictureSelector = '#pictures';
+export const popupDeletePictureSelector = '#delete';
+export const popupAvatarSelector = '#avatar';
 export const sectionOfCardsSelector = '.elements';
+
+// Текст уведомления пользователя о процессе загрузки
+export const textOfSave = 'Сохранение...'
 
 //Селекторы элементов для валидации
 export const settings = {
@@ -45,13 +50,16 @@ export const settings = {
 //Селекторы элементов для класса UserInfo
 export const userInformation = {
    profileNameSelector: '#infoname',
-   profileJobSelector: '#infojob'
+   profileJobSelector: '#infojob',
+   profileAvatarSelector: '.profile__avatar'
   };
 
 //Кнопки для открытия всплывающих окон ("Профиль" и "Карточки")
 export const buttonOpenPopupProfile = document.querySelector('.profile__edit-profile');            
 export const buttonOpenPopupCard = document.querySelector('.profile__edit-pic');
+export const buttonOpenPopupAvatar = document.querySelector('.profile__avatar-change')
 
 //Формы для заполнения данных
 export const formPopupProfile = document.querySelector('#form-profile');
 export const formPopupCard = document.querySelector('#form-cards');
+export const formPopupAvatar = document.querySelector('#form-avatar');

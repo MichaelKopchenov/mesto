@@ -6,8 +6,7 @@
     background-position: 50%;
     background-size: 22px 19px;
     min-width: 22px;
-    max-height: 19px;
-    margin: 5px 5px 0 auto;
+    min-height: 19px;
     transition: .5s ease;
     border: none;
 }

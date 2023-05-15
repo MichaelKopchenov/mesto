@@ -14,7 +14,7 @@ renderItems() {
   };
 
 //ООП Добавление карточек в начало
-addItem(element) {
-    this._container.prepend(element);
+addItem(item) {
+    this._container.prepend(item);
   };
 };
