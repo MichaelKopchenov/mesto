@@ -3,7 +3,7 @@ export default class Popup {
   constructor(popupSelector) {
     this._popup = document.querySelector(popupSelector);
     this._buttonClosePopup = this._popup.querySelector('.popup__close-btn');
-    this.submitButton = this._popup.querySelector('.popup__submit');
+    this.buttonSubmit = this._popup.querySelector('.popup__submit');
   }
 
 //ООП Закрытие при помощи кнопки "ESC"
@@ -26,7 +26,7 @@ _handleOverlayClose = (evt) => {
   }
 
 setEventListeners() {
-    this._popup.addEventListener('click', this._handleOverlayClose);
+    this._popup.addEventListener('mousedown', this._handleOverlayClose);
     this._buttonClosePopup.addEventListener('click', this._handleButtonClose);
   }
 

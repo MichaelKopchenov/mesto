@@ -4,94 +4,128 @@ export default class Api {
         this._headers = options.headers
         this._authorization = options.headers.authorization
         }
-    
-    _rejectPromise(res) {
+
+getInitialCards() {
+    return fetch(`${this._url}/cards`, {
+        headers: {
+        authorization: this._authorization
+        }
+    })
+        .then(res => {
         if (res.ok) {
             return res.json();
         }
         return Promise.reject(`Ошибка: ${res.status}`);
-    }
+    });
+}
 
-    getInitialCards() {
-        return fetch(`${this._url}/cards`, {
-            headers: {
-            authorization: this._authorization
-            }
+getInitialProfile() {
+    return fetch(`${this._url}/users/me`, {
+        headers: {
+        authorization: this._authorization
+        }
+    })
+    .then(res => {
+    if (res.ok) {
+        return res.json();
+    }
+    return Promise.reject(`Ошибка: ${res.status}`);
+    });
+}
+
+setNewProfileData(dataOfUser) {
+    return fetch(`${this._url}/users/me`, {
+        method: 'PATCH',
+        headers: this._headers,
+        body: JSON.stringify({
+            name: dataOfUser.title,
+            about: dataOfUser.job,
         })
-    .then(this._rejectPromise)
-    }
+    })
+    .then(res => {
+        if (res.ok) {
+            return res.json();
+        }
+        return Promise.reject(`Ошибка: ${res.status}`);
+    });
+}
 
-    getNewCards(cardData) {
-        return fetch(`${this._url}/cards`, {
-            method: 'POST',
-            headers: this._headers,
-            body: JSON.stringify({
-              name: cardData.title,
-              link: cardData.link,
-            })
-          })
-            .then(this._rejectPromise)
-    }
-    
-    getUserInfo() {
-        return fetch(`${this._url}/users/me`, {
-            headers: {
-            authorization: this._authorization
-          }
+setNewCard(data) {
+    return fetch(`${this._url}/cards`, {
+        method: 'POST',
+        headers: this._headers,
+        body: JSON.stringify({
+            name: data.name,
+            link: data.link,
         })
-        .then(this._rejectPromise)
-      }
+    })
+    .then(res => {
+        if (res.ok) {
+            return res.json();
+        }
+        return Promise.reject(`Ошибка: ${res.status}`);
+    });
+}
 
-    getNewUserInfo(dataOfUser) {
-        return fetch(`${this._url}/users/me`, {
-            method: 'PATCH',
-            headers: this._headers,
-            body: JSON.stringify({
-              name: dataOfUser.username,
-              about: dataOfUser.job,
-            })
-          })
-          .then(this._rejectPromise)
-    }
+setNewAvatar(data) {
+    return fetch(`${this._url}/users/me/avatar`, {
+      method: 'PATCH',
+      headers: this._headers,
+      body: JSON.stringify({
+        avatar: data.link,
+      })
+    })
+    .then(res => {
+        if (res.ok) {
+            return res.json();
+        }
+        return Promise.reject(`Ошибка: ${res.status}`);
+    });
+}
 
-    getNewAvatar(data) {
-        return fetch(`${this._url}/users/me/avatar`, {
-            method: 'PATCH',
-            headers: this._headers,
-            body: JSON.stringify({
-                avatar: data.avatar,
-            })
-          })
-          .then(this._rejectPromise)
-      }
+deleteMyCard(cardId) {
+    return fetch(`${this._url}/cards/${cardId}`, {
+      method: 'DELETE',
+      headers: {
+        authorization: this._authorization
+        }
+    })
+    .then(res => {
+        if (res.ok) {
+            return res.json();
+        }
+        return Promise.reject(`Ошибка: ${res.status}`);
+    });
+}
 
-    putLike(cardId) {
-        return fetch(`${this._url}/cards/${cardId}/likes`, {
-            method: 'PUT',
-            headers: {
-                authorization: this._authorization
-            }
-         })
-         .then(this._rejectPromise)
-    }
+putLike(cardId) {
+    return fetch(`${this._url}/cards/${cardId}/likes`, {
+      method: 'PUT',
+      headers: {
+        authorization: this._authorization
+        }
+    })
+    .then(res => {
+        if (res.ok) {
+            return res.json();
+        }
+        return Promise.reject(`Ошибка: ${res.status}`);
+    });
+}
 
-    deleteLike(cardId) {
-        return fetch(`${this._url}/cards/${cardId}/likes`, {
-            method: 'DELETE',
-            headers: {
-                authorization: this._authorization
-            }
-         })
-         .then(this._rejectPromise)
-    }
+unputLike(cardId) {
+    return fetch(`${this._url}/cards/${cardId}/likes`, {
+      method: 'DELETE',
+      headers: {
+        authorization: this._authorization
+        }
+    })
+    .then(res => {
+        if (res.ok) {
+            return res.json();
+        }
+        return Promise.reject(`Ошибка: ${res.status}`);
+    });
+}
 
-    deleteCard(cardId) {
-        return fetch(`${this._url}/cards/${cardId}`, {
-            method: 'DELETE',
-            headers: {
-                authorization: this._authorization
-            }
-         })
-            .then(this._rejectPromise)
-    }
 }

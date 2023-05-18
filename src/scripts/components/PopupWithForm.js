@@ -27,9 +27,8 @@ setEventListeners() {
     super.setEventListeners();
     this._form.addEventListener('submit', (evt) => {
       evt.preventDefault();
-      this.submitButton.textContent = `${this.submitButton.textContent}...`
       this._submitFunction(this._getInputValues());
-      this.close();
+      this.buttonSubmit.textContent = `${this.buttonSubmit.textContent}...`;
     });
   };
 

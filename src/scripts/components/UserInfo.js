@@ -2,7 +2,7 @@ export default class UserInfo {
     constructor(userInformation) {
       this._profileName = document.querySelector(userInformation.profileNameSelector);
       this._profileJob = document.querySelector(userInformation.profileJobSelector);
-      this.profileAvatar = document.querySelector(userInformation.profileAvatarSelector);
+      this.profileAvatar = document.querySelector(userInformation.profileAvatarSelector)
     };
   
     getUserInfo() {
@@ -13,7 +13,7 @@ export default class UserInfo {
     };
   
     setUserInfo(dataOfUser) {
-      this._profileName.textContent = dataOfUser.title;
+      this._profileName.textContent = dataOfUser.name;
       this._profileJob.textContent = dataOfUser.job;
       this.profileAvatar.src = dataOfUser.avatar;
     };

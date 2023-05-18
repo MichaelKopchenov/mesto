@@ -13,12 +13,12 @@
     <main>
         <section class="profile">
             <button type="button" class="profile__avatar-change">
-                <img src="<%=require('./images/Avatar.jpg')%>" alt="Аватарка" class="profile__avatar">
+                <img src="#" alt="Аватарка" class="profile__avatar">
             </button>
             <div class="profile__info">
-                <h1 class="profile__info-title" id="infoname">Жак-Ив Кусто</h1>
+                <h1 class="profile__info-title" id="infoname"></h1>
                 <button type="button" class="profile__edit-profile"></button>
-                <p class="profile__info-subtitle" id="infojob">Иследователь океана</p>
+                <p class="profile__info-subtitle" id="infojob"></p>
             </div>
             <button type="button" class="profile__edit-pic"></button>
         </section>
@@ -42,7 +42,7 @@
                 <input type="text" class="popup__input" name="job" id="job" placeholder="О себе" minlength="2" maxlength="200" required>
                 <span class="job-input-error popup__form-input-error"></span>
                 </label>
-                <button id="profile-btn" type="submit" class="popup__submit" name="update">Сохранить</button>
+                <button id="profile-submit" type="submit" class="popup__submit" name="update">Сохранить</button>
             </form>
         </div>    
     </div>
@@ -72,7 +72,7 @@
                 <input type="url" class="popup__input" name="link" id="card-link" placeholder="Ссылка на картинку" required>
                 <span class="card-link-input-error popup__form-input-error"></span>
                 </label>
-                <button id="card-btn" type="submit" class="popup__submit" name="create">Создать</button>
+                <button id="card-submit" type="submit" class="popup__submit" name="create">Создать</button>
             </form>
         </div>
     </div>
@@ -88,7 +88,7 @@
             <button type="button" class="popup__close-btn"></button>
             <h3 class="popup__title">Вы уверены?</h3>
             <form id="form-delete" class="popup__form" name="delete-place" novalidate>
-                <button id="delete-btn" type="submit" class="popup__submit">Да</button>
+                <button id="delete-submit" type="submit" class="popup__submit">Да</button>
             </form>
         </div>
     </div>
@@ -100,7 +100,7 @@
                <h2 class="element__title" id="place-name"></h2>
                <div class="element__like-box">
                     <button type="button" class="element__like-btn"></button>
-                    <span class="element__like-counter">0</span>
+                    <span class="element__like-counter"></span>
                </div>
             </div>
         </article>

@@ -1,20 +1,24 @@
 //ООП Класс для отрисовки элементов на странице
 export default class Section {
-    constructor( { items, renderer }, containerSelector) {
-      this._items = items;
+    constructor(renderer, containerSelector) {
       this._renderer = renderer;
       this._container = document.querySelector(containerSelector);
     };
 
 //ООП Добавление карточек
-renderItems() {
-    this._items.forEach(item => {
+renderItems(addCards) {
+    addCards.forEach(item => {
       this._renderer(item);
     })
   };
 
 //ООП Добавление карточек в начало
-addItem(item) {
-    this._container.prepend(item);
-  };
+addItemPrepend(item) {
+  this._container.prepend(item);
+}
+
+// ООП Добавление карточек в конец
+addItemAppend(item) {
+  this._container.append(item);
+}
 };

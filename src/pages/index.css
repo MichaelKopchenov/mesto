@@ -14,6 +14,7 @@
 @import url(../blocks/profile/__edit-pic/profile__edit-pic.css);
 @import url(../blocks/profile/__edit-profile/profile__edit-profile.css);
 @import url(../blocks/element/__delete-btn/element__delete-btn.css);
+@import url(../blocks/element/__delete-btn/_hidden/element__delete-btn_hidden.css);
 
 /*Шапка сайта*/
 @import url(../blocks/header/header.css);
