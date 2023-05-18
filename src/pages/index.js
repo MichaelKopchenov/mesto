@@ -106,7 +106,7 @@ const popupProfileEdit = new PopupWithForm(popupProfileSelector, (data) => {
       popupProfileEdit.close();
     })
     .catch((err) => {
-      console.error(`Что-то пошло не так при обновлении данных профиля ${err}`)
+      console.log(`Что-то пошло не так при обновлении данных профиля ${err}`)
     })
     .finally(() => popupProfileEdit.buttonSubmit.textContent = textOfSave)
 });
