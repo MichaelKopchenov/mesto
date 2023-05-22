@@ -6,9 +6,6 @@ export const popupAvatarSelector = '#avatar';
 export const popupDeleteSelector = '#delete';
 export const sectionOfCardsSelector = '.elements';
 
-// ООП ID пользователя
-export let userId; // Попробовал второй вариант решения после первого ревью. Сохранил ID пользователя в глобальную переменную.
-
 //Селекторы элементов для валидации
 export const settings = {
     formSelector: '.popup__form',

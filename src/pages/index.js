@@ -22,8 +22,7 @@ import {
   buttonOpenPopupCard,
   formPopupProfile,
   formPopupAvatar,
-  formPopupCard,
-  userId
+  formPopupCard
 } from '../scripts/utils/Consts.js';
 
 // ООП Создание экземпляра класса Api
@@ -44,7 +43,10 @@ const validationAvatar = new FormValidator(settings, formPopupAvatar)
 const userInfo = new UserInfo(userInformation);
 
 // ООП Экземпляр класса PopupWithImage
-const popupZoomPicture = new PopupWithImage(popupZoomPictureSelector); 
+const popupZoomPicture = new PopupWithImage(popupZoomPictureSelector);
+
+// ООП ID пользователя
+let userId; 
 
 // ООП Создание карточки
 function createCard(cardData) {
