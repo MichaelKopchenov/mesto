@@ -6,8 +6,8 @@ export const popupAvatarSelector = '#avatar';
 export const popupDeleteSelector = '#delete';
 export const sectionOfCardsSelector = '.elements';
 
-// Текст уведомления пользователя о процессе загрузки
-export const textOfSave = 'Сохранение'
+// ООП ID пользователя
+export let userId; // Попробовал второй вариант решения после первого ревью. Сохранил ID пользователя в глобальную переменную.
 
 //Селекторы элементов для валидации
 export const settings = {

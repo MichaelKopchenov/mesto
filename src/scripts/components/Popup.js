@@ -3,7 +3,6 @@ export default class Popup {
   constructor(popupSelector) {
     this._popup = document.querySelector(popupSelector);
     this._buttonClosePopup = this._popup.querySelector('.popup__close-btn');
-    this.buttonSubmit = this._popup.querySelector('.popup__submit');
   }
 
 //ООП Закрытие при помощи кнопки "ESC"

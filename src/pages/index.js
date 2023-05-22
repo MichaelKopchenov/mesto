@@ -23,7 +23,7 @@ import {
   formPopupProfile,
   formPopupAvatar,
   formPopupCard,
-  textOfSave,
+  userId
 } from '../scripts/utils/Consts.js';
 
 // ООП Создание экземпляра класса Api
@@ -44,43 +44,36 @@ const validationAvatar = new FormValidator(settings, formPopupAvatar)
 const userInfo = new UserInfo(userInformation);
 
 // ООП Экземпляр класса PopupWithImage
-const popupZoomPicture = new PopupWithImage(popupZoomPictureSelector);
+const popupZoomPicture = new PopupWithImage(popupZoomPictureSelector); 
 
 // ООП Создание карточки
 function createCard(cardData) {
-  const card = new Card (cardData, '#template', popupZoomPicture.open, popupDeleteMyCard.open, (likeButton, cardId) => {
-    if (likeButton.classList.contains('element__like-btn_active')) {
-      apiLikeRemove(cardId);
-    } else {
-      apiLikePut(cardId);
-    }
+  const card = new Card (cardData, userId, '#template', popupZoomPicture.open, popupDeleteMyCard.open, {
+    // ООП Нажатие кнопки Лайк
+    handleLike: () => {
+      api.putLike(cardData._id)
+        .then((res) => {
+          card.activateLikeClass(res.likes);
+        })
+        .catch((err) => {
+          console.log(`Что-то пошло не так при нажатии на Лайк ${err}`)
+        });
+    },
+    // ООП Отжатие кнопки Лайк
+    handleDeleteLike: () => {
+      api.unputLike(cardData._id)
+        .then((res) => {
+          card.activateLikeClass(res.likes);
+        })
+        .catch((err) => {
+          console.log(`Что-то пошло не так при снятии Лайка ${err}`)
+        });
+    },
   });
-
-// ООП Снятие лайка с карточки
-  const apiLikeRemove = (cardId) => {
-    api.unputLike(cardId)
-      .then(res => {
-      card.activateLikeClass(res.likes)
-    })
-    .catch((err) => {
-      console.log(`Что-то пошло не так при снятии лайка ${err}`)
-    });
-  };
-
-// ООП Постановка лайка карточке
-  const apiLikePut = (cardId) => {
-    api.putLike(cardId)
-      .then(res => {
-        card.activateLikeClass(res.likes)
-      })
-      .catch((err) => {
-        console.log(`Что-то пошло не так при постановке лайка ${err}`)
-      });
-  };
   return card.createNewCard();
-};
+}
 
-//ООП Экземпляр класса Section для создания разметки и начальных карточек
+// ООП Экземпляр класса Section для создания разметки и начальных карточек
 const section = new Section((dataCard) => { 
   section.addItemAppend(createCard(dataCard));
 }, sectionOfCardsSelector);
@@ -88,14 +81,15 @@ const section = new Section((dataCard) => {
 // ООП Добавление начальных данных пользователя и карточек
 Promise.all([api.getInitialProfile(), api.getInitialCards()])
   .then(([dataOfUser, dataCard]) => {
-    dataCard.forEach(element => element.myid = dataOfUser._id);
+    userId = dataOfUser._id; // Присваиваем переменной ID пользователя
     userInfo.setUserInfo({name: dataOfUser.name, job: dataOfUser.about, avatar: dataOfUser.avatar});
     section.renderItems(dataCard);
   })
   
 
-//ООП Экземпляр класса PopupWithForm для редактирования профиля
+// ООП Экземпляр класса PopupWithForm для редактирования профиля
 const popupProfileEdit = new PopupWithForm(popupProfileSelector, (data) => {
+  popupProfileEdit.load(true);
   api.setNewProfileData(data)
     .then((dataOfUser) => {
       userInfo.setUserInfo({
@@ -108,11 +102,14 @@ const popupProfileEdit = new PopupWithForm(popupProfileSelector, (data) => {
     .catch((err) => {
       console.log(`Что-то пошло не так при обновлении данных профиля ${err}`)
     })
-    .finally(() => popupProfileEdit.buttonSubmit.textContent = textOfSave)
+    .finally(() => {
+      popupProfileEdit.load(false);
+    })
 });
 
 // ООП Экземпляр класса PopupWithForm для редактирования аватара
 const popupAvatar = new PopupWithForm(popupAvatarSelector, (data) => {
+  popupAvatar.load(true);
   api.setNewAvatar(data)
     .then((dataOfUser) => {
       userInfo.setUserInfo({
@@ -125,23 +122,26 @@ const popupAvatar = new PopupWithForm(popupAvatarSelector, (data) => {
     .catch((err) => {
       console.log(`Что-то пошло не так при обновлении аватара ${err}`)
     })
-    .finally(() => popupProfileEdit.buttonSubmit.textContent = textOfSave) //Подсказали данное решение в чате когорты
+    .finally(() => {
+      popupAvatar.load(false);
+    })
 });
 
 //ООП Экземпляр класса PopupWithForm для добавления новых карточек
 const popupCardsAdd = new PopupWithForm(popupCardsSelector, (data) => {
-  Promise.all([api.getInitialProfile(), api.setNewCard(data)])
-    .then(([dataOfUser, dataCard]) => {
-      dataCard.myid = dataOfUser._id
+  popupCardsAdd.load(true);
+  api.setNewCard(data)
+    .then((dataCard) => {
       section.addItemPrepend(createCard(dataCard));
       popupCardsAdd.close();
     })
     .catch((err) => {
-      console.log(`Что-то пошло не так при добавлении ${err}`)
+      console.log(`Что-то пошло не так при добавлении карточки ${err}`)
     })
-    .finally(() => popupCardsAdd.buttonSubmit.textContent = textOfSave)
+    .finally(() => {
+      popupCardsAdd.load(false)
+    })
 })
-
 // ООП Экземпляр класса PopupWithFormDelete для удаления своих карточек
 const popupDeleteMyCard = new PopupWithFormDelete(popupDeleteSelector, ({card, cardId}) => {
   api.deleteMyCard(cardId)
